@@ -10,7 +10,7 @@ Topics (subject to revision): regular expressions; finite automata; context-free
 
 |                       |         Details      |
 |-----------------------|----------------------|
-| **Lecture**           | T/Th 3:05-4:20pm in Microsoft Teams |
+| **Lecture**           | T/Th 3:05-4:25pm in Microsoft Teams |
 | **Instructor**        | Alexander Bagnall (ab667712@ohio.edu) |
 | **Office Hours**      | T/Th 2-3pm (email or Teams) |
 | **TA**                | TBD |
