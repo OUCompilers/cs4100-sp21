@@ -34,7 +34,7 @@ This is a demanding course that requires extensive programming work, in the form
 
 The course consists of weekly lectures (Tu/Th) in Microsoft Teams, attendance at which is required. To help get you up to speed with the course programming assignments, we'll also hold biweekly lab hours (TBD). Although attendance at the lab hours is optional, I highly recommend that you participate — at least for the first few weeks. The programming assignments for this course are extensive and time consuming, so be prepared!
 
-In addition to biweekly homework assignments, there will be a midterm exam (Week 8, approximately 15% of your grade) and a final (approximately 25%). The biweekly homeworks (programming assignments) are worth approximately 40%. We'll have bi-weekly offline Blackboard quizzes (total 10%). You get an additional 10% for free, just for signing up for the course.
+In addition to biweekly homework assignments, there will be a midterm exam (Week 9, approximately 15% of your grade) and a final (approximately 25%). The homeworks (programming assignments) are worth approximately 40%. We'll have Blackboard quizzes on weeks when no homework is due (total 10%). You get an additional 10% for free, just for signing up for the course.
 
 ### Grade Breakdown
 
@@ -46,7 +46,7 @@ In addition to biweekly homework assignments, there will be a midterm exam (Week
 | Final exam              | 25% |
 | Free points             | 10% |
 
-Blackboard will be used to report grades and to post lecture notes. Up-to-date information on all other aspects of the course (assignment due dates, etc.) will be posted either on this website or in Microsoft Teams.
+Blackboard will be used to report grades and to post lecture notes and reading material. Up-to-date information on all other aspects of the course (assignment due dates, etc.) will be posted either on this website or in Microsoft Teams.
 
 ## Schedule
 
