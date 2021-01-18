@@ -55,19 +55,19 @@ The schedule is subject to revision.
 | Week                        | Topic                                 | Reading                        | Assignment |
 |-----------------------------|---------------------------------------|--------------------------------|------------|
 | Week 1 (18 Jan) | Intro. to the course, compilers, Rust | [The Rust Book](https://doc.rust-lang.org/book/index.html) 1-3 | Q0 (23 Jan) |
-| Week 2 (25 Jan) | Rust contd. | [The Rust Book](https://doc.rust-lang.org/book/index.html) 4-6, 8 | [PA0: Intro. to Rust](pa/0.md) (30 Jan) |
-| Week 3 (1 Feb) | Rust contd. | | |
-| Week 4 (8 Feb) | Virtual machines, bytecode, assemblers | Crafting Interpreters [14](http://www.craftinginterpreters.com/chunks-of-bytecode.html), [15](http://www.craftinginterpreters.com/a-virtual-machine.html) | Q1 (13 Feb) |
+| Week 2 (25 Jan) | Rust contd. | [The Rust Book](https://doc.rust-lang.org/book/index.html) 4-6, 8 | Q1 (30 Jan) |
+| Week 3 (1 Feb) | Rust contd. | | [PA0: Intro. to Rust](pa/0.md) (6 Feb) |
+| Week 4 (8 Feb) | Virtual machines, bytecode, assemblers | Crafting Interpreters [14](http://www.craftinginterpreters.com/chunks-of-bytecode.html), [15](http://www.craftinginterpreters.com/a-virtual-machine.html) | Q2 (13 Feb) |
 | Week 5 (15 Feb) | Garbage collection, concurrency | Appel 13 | [PA1: Assembler](pa/1.md) (20 Feb) |
-| Week 6 (22 Feb) | Intermediate representations, code generation | [Intermediate Representations](doc/ir.md), [Code Generation](doc/codegen.md) | Q2 (27 Feb) |
-| Week 7 (1 Mar) | Regular languages, regular expressions | Appel 2 (through 2.2), [RE Derivatives](re-derivs.pdf) | Q3 (6 Mar)  |
-| Week 8 (8 Mar) | DFAs, NFAs, lexers and lexer generators | Appel 2.3-2.5 | [PA2: VM](pa/2.md) (13 Mar), Midterm Exam (12 Mar) |
-| Week 9 (15 Mar) | Context-free languages, pushdown automata | Appel 3 | [PA3: Runtime](pa/3.md) (20 Mar) |
-| Week 10 (22 Mar) | Recursive descent and predictive parsing, parser generators | Appel 7.1, Appel 18.1 | No quiz -- work on PA4! |
-| Week 11 (29 Mar) | Control-flow graphs, dominators | Appel 7.1, Appel 18.1 |  |
-| Week 12 (5 Apr)| Dataflow/liveness analysis | Appel 10.1, Appel 19 (up to but not including 19.1) | Q5 (14 Apr), [PA4: IR](pa/4.md) (10 Apr) |
-| Week 13 (12 Apr) | Register allocation | Appel 11 | TBD |
-| Week 14 (19 Apr) | TBD |
+| Week 6 (22 Feb) | Intermediate representations, code generation | [Intermediate Representations](doc/ir.md), [Code Generation](doc/codegen.md) | Q3 (27 Feb) |
+| Week 7 (1 Mar) | Regular languages, regular expressions | Appel 2 (through 2.2), [RE Derivatives](re-derivs.pdf) | Q4 (6 Mar)  |
+| Week 8 (8 Mar) | DFAs, NFAs, lexers and lexer generators | Appel 2.3-2.5 | [PA2: VM](pa/2.md) (12 Mar) |
+| Week 9 (15 Mar) | Context-free languages, pushdown automata | Appel 3 | Midterm Exam (19 Mar) |
+| Week 10 (22 Mar) | Recursive descent and predictive parsing, parser generators | Appel 7.1, Appel 18.1 | [PA3: Runtime](pa/3.md) (27 Mar) |
+| Week 11 (29 Mar) | Abstract syntax trees, type systems, typechecking | TAPL 8 | Q5 (3 Apr) |
+| Week 12 (5 Apr) | Control-flow graphs, dominators | Appel 7.1, Appel 18.1 | No quiz -- work on PA4! |
+| Week 13 (12 Apr) | Dataflow/liveness analysis | Appel 10.1, Appel 19 (up to but not including 19.1) | [PA4: IR](pa/4.md) (17 Apr) |
+| Week 14 (19 Apr) | Register allocation | Appel 11 | No quiz -- study for finals! |
 | Apr 26 - Apr 20 | **FINAL EXAM** (TBD) | | [PA5: Optimizations](pa/5.md) (TBD) |
 
 Assignments are due in Blackboard at 11:59pm unless otherwise specified. **Q0**, **Q1**, etc., denote quizzes in Blackboard, generally due on the Saturdays of weeks with no due programming assignments (PAs).
