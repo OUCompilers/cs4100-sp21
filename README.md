@@ -15,7 +15,6 @@ Topics (subject to revision): regular expressions; finite automata; context-free
 | **Office Hours**      | T/Th 2-3pm (email or Teams) |
 | **TA**                | TBD |
 | **Lab Hours**         | TBD |
-| **GitHub Classroom**  |[https://classroom.github.com/classrooms/58786651-cs4100-sp21](https://classroom.github.com/classrooms/58786651-cs4100-sp21) |
 
 ## Texbook
 
@@ -70,7 +69,7 @@ The schedule is subject to revision.
 | Week 14 (19 Apr) | Register allocation | Appel 11 | No quiz -- study for finals! |
 | Apr 26 - Apr 20 | **FINAL EXAM** (TBD) | | [PA5: Optimizations](pa/5.md) (TBD) |
 
-Assignments are due in Blackboard at 11:59pm unless otherwise specified. **Q0**, **Q1**, etc., denote quizzes in Blackboard, generally due on the Saturdays of weeks with no due programming assignments (PAs).
+Assignments are due in Blackboard at 11:59pm unless otherwise specified. **Q0**, **Q1**, etc., denote quizzes in Blackboard, generally due on the Fridays of weeks with no due programming assignments (PAs).
 
 ## Homework and Collaboration Policies
 
