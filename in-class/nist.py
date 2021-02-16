@@ -23,4 +23,4 @@ with urllib.request.urlopen("https://beacon.nist.gov/beacon/2.0/pulse/last") as 
         else:
             print("trying again..")
 
-    print("done")
+    # print("done")
