@@ -10,28 +10,28 @@ We define values as either 32-bit integers or the distinguished Boolean values `
 
 ```
 Values 
-v ::= n                   //32-bit signed integers
-      true | false        //Boolean values
-      tt                  //The unit value
+v ::= n                   // 32-bit signed integers
+      true | false        // Boolean values
+      tt                  // The unit value
 ```
 
 Larger GrumpyIR programs are composed of expressions, which are wrapped in function definitions, which themselves compose whole programs. We describe the GrumpyIR expression language first. Here's its syntax:
 
 ```
 Expressions 
-e ::= v                     //Values
-      x                     //Variables
-      (u e)                 //Unary operation u applied to expression e
-      (b e1 e2)             //Binary operation b applied to expressions e1 and e2
-      (let x e1 e2)         //Let x equal the result of e1 in e2 (in which x may appear free)
-      (seq e1 e2)           //Sequential composition (do e1 then e2)
-      (alloc esize einit)   //Allocate an array of size esize, initialized at each index to einit
-      (set earr eix e)     //Update array earr at index eix to the value of e
-      (get earr eix)       //Get the value at index eix of array earr
-      (cond econd e1 e2)    //If econd evaluates to true then e1, else e2
-      (funptr f)            //A pointer to function f
-      (call e e1 e2 ... eN) //Call function pointer e  
-      (f e1 e2 ... eN)      //Call function f
+e ::= v                     // Values
+      x                     // Variables
+      (u e)                 // Unary operation u applied to expression e
+      (b e1 e2)             // Binary operation b applied to expressions e1 and e2
+      (let x e1 e2)         // Let x equal the result of e1 in e2 (in which x may appear free)
+      (seq e1 e2)           // Sequential composition (do e1 then e2)
+      (alloc esize einit)   // Allocate an array of size esize, initialized at each index to einit
+      (set earr eix e)      // Update array earr at index eix to the value of e
+      (get earr eix)        // Get the value at index eix of array earr
+      (cond econd e1 e2)    // If econd evaluates to true then e1, else e2
+      (funptr f)            // A pointer to function f
+      (call e e1 e2 ... eN) // Call function pointer e  
+      (f e1 e2 ... eN)      // Call function f
 ```
 
 The syntax `(f e1 e2 ... eN)`, while supported by a compliant GrumpyIR parser, is purely for convenience. All such calls can be desugared as `(call (funptr f) e1 e2 ... eN)`.
@@ -54,18 +54,18 @@ Function definitions are composed of:
 
 ```
 Functions 
-param ::= (x ty)                                   //Function parameters, annotated with types
-   fn ::= (fun f param1 param2 ... paramN -> ty e) //Function definitions
+param ::= (x ty)                                   // Function parameters, annotated with types
+   fn ::= (fun f param1 param2 ... paramN -> ty e) // Function definitions
 ```
 
 Parameters are pairs of an identifier `x` and type `ty` where types are defined as:
 
 ```
 Types 
-ty ::= i32                //32-bit integers
-       bool               //Booleans
-       unit               //The unit type
-       (array ty)         //Arrays of values of type ty
+ty ::= i32                // 32-bit integers
+       bool               // Booleans
+       unit               // The unit type
+       (array ty)         // Arrays of values of type ty
 ```
 
 Finally, programs compose sequences of functions (0 or more) with a "main" expression `e`, the result of which is the result of the whole program. The function definitions must be separated from the body by a `%`.
