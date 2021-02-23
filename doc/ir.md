@@ -26,16 +26,12 @@ e ::= v                     //Values
       (let x e1 e2)         //Let x equal the result of e1 in e2 (in which x may appear free)
       (seq e1 e2)           //Sequential composition (do e1 then e2)
       (alloc esize einit)   //Allocate an array of size esize, initialized at each index to einit
-      (set earr eidx e)     //Update array earr at index eidx to the value of e
-      (get earr eidx)       //Get the value at index eidx of array earr
+      (set earr eix e)     //Update array earr at index eix to the value of e
+      (get earr eix)       //Get the value at index eix of array earr
       (cond econd e1 e2)    //If econd evaluates to true then e1, else e2
       (funptr f)            //A pointer to function f
       (call e e1 e2 ... eN) //Call function pointer e  
       (f e1 e2 ... eN)      //Call function f
-      
-//Extended expression types NOT required in PA4:
-      (print e)             //Evaluate e to an i32 then print as ASCII by casting to u8
-      (spawn eclos)         //Spawn a new thread initialized to run eclos (a heap-allocated closure)
 ```
 
 The syntax `(f e1 e2 ... eN)`, while supported by a compliant GrumpyIR parser, is purely for convenience. All such calls can be desugared as `(call (funptr f) e1 e2 ... eN)`.
