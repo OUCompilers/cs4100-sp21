@@ -519,15 +519,3 @@ Post-state (`b == false`):
 ### Halt
 
 Unconditionally halt the machine.
-
-Pre-state: 
-
-| halt | 
-| ---- | 
-|      | 
-
-Post-state: 
-
-| halt | 
-| ---- | 
-| true | 
