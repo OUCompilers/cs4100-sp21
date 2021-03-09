@@ -10,42 +10,39 @@ In this chapter, we present GrumpyVM, a virtual machine for a low-level stack-ba
 
 The GrumpyVM implements a machine model with the following major components:
 
-* Flag `halt` indicating whether the machine has halted
-* Register `pc` containing the current program counter, a `u32`
-* Register `fp` containing the current frame pointer, a `u32`
+* A register `pc` containing the current program counter, a `u32`
+* A register `fp` containing the current frame pointer, a `u32`
 * A stack of values `Val`, with maximum size `STACK_SIZE` 
 * A heap of values `Val`, with maximum size `HEAP_SIZE`
-* The program to be executed, `program`, a list of instructions
+* The program to be executed, `program`, a vector of instructions.
 
 We implement the machine model as the Rust datatype:
 
 ```
-#[derive(Debug,Clone)]
-pub struct State {
-    pub halt: bool, //Has the machine halted?
-    pub pc: u32, //The current program counter, a 32-bit unsigned integer
-    pub fp: u32, //The current frame pointer
-    pub stack: Vec<Val>, //The stack, with maximum size STACK_SIZE
-    pub heap: Vec<Val>, //The heap
-    pub program: Vec<Instr> //The program being executed, a list of instructions
+struct State {
+    pc: u32,         // Program counter
+    fp: u32,         // Frame pointer
+    stk: Vec<Val>,   // The stack, with maximum size STK_SIZE
+    heap: Vec<Val>,  // The heap, with maximum size HEAP_SIZE
+    prog: Vec<Instr> // The program being executed, a vector of instructions
 }
 ```
 
 Values are either undefined, unit, 32-bit integers, booleans, locations, object sizes, or addresses, as implemented by: 
 
 ```
-#[derive(Debug,Clone,PartialEq)]
 pub enum Val {
-    //Value types that may appear in GrumpyVM programs:
-    Vunit,          //The unit value
-    Vi32(i32),      //32-bit signed integers
-    Vbool(bool),    //Booleans
-    Vloc(u32),      //Stack or instruction locations
-    Vundef,         //The undefined value
-    
-    //Value types that are used internally by the language implementation, and may not appear in GrumpyVM programs:
-    Vsize(i32),     //Metadata for heap objects that span multiple values
-    Vaddr(Address), //Pointers to heap locations
+    // Value types that may appear in GrumpyVM programs:
+    Vunit,       // The unit value
+    Vi32(i32),   // 32-bit signed integers
+    Vbool(bool), // Booleans
+    Vloc(u32),   // Stack or instruction locations
+    Vundef,      // The undefined value
+
+    // Value types that are used internally by the language
+    // implementation, and may not appear in GrumpyVM programs:
+    Vsize(usize),   // Metadata for heap objects that span multiple values
+    Vaddr(Address), // Pointers to heap locations
 }
 ```
 
@@ -62,47 +59,44 @@ the type of pointer-sized unsigned integers appropriate for the machine on which
 The GrumpyVM language consists of the following instructions. We describe the instructions at a high level first, then go into detail.
 
 ```
-#[derive(Debug,Clone)]
 pub enum Instr {
-    Push(Val),     //Push(v): Push value v onto the stack
-    Pop,           //Pop a value from the stack, discarding it
-    Peek(u32),     //Peek(i): Push onto the stack the ith value from the top
-    Unary(Unop),   //Unary(u): Apply u to the top value on the stack
-    Binary(Binop), //Binary(b): Apply b to the top two values on the stack, replacing them with the result
-    Swap,          //Swap the top two values
-    Alloc,         //Allocate an array on the heap
-    Set,           //Write to a heap-allocated array
-    Get,           //Read from a heap-allocated array
-    Var(u32),      //Var(i): Get the value at stack position fp+i
-    Store(u32),    //Store(i): Store a value at stack position fp+i
-    SetFrame(u32), //SetFrame(i): Set fp = s.stack.len() - i
-    Call,          //Function call
-    Ret,           //Function return
-    Branch,        //Conditional jump
-    Halt           //Halt the machine
+    Push(Val),     // Push(v): Push value v onto the stack
+    Pop,           // Pop a value from the stack, discarding it
+    Peek(u32),     // Peek(i): Push onto the stack the ith value from the top
+    Unary(Unop),   // Unary(u): Apply u to the top value on the stack
+    Binary(Binop), // Binary(b): Apply b to the top two values on the stack, replacing them with the result
+    Swap,          // Swap the top two values
+    Alloc,         // Allocate an array on the heap
+    Set,           // Write to a heap-allocated array
+    Get,           // Read from a heap-allocated array
+    Var(u32),      // Var(i): Get the value at stack position fp+i
+    Store(u32),    // Store(i): Store a value at stack position fp+i
+    SetFrame(u32), // SetFrame(i): Set fp = s.stack.len() - i
+    Call,          // Function call
+    Ret,           // Function return
+    Branch,        // Conditional jump
+    Halt           // Halt the machine
 }
 ```
 
 The unary operators are: 
 
 ```
-#[derive(Debug,Clone)]
 pub enum Unop {
-    Neg, //Boolean negation
+    Neg, // Boolean negation
 }
 ```
 
 while the binary operators are: 
 
 ```
-#[derive(Debug,Clone)]
 pub enum Binop {
-    Add, //i32 addition
-    Mul, //i32 multiplication
-    Sub, //i32 subtraction
-    Div, //i32 division (raises an error on divide by zero)
-    Lt,  //Returns true if one i32 is less than another, otherwise false
-    Eq,  //Returns true if one i32 is equal another, otherwise false
+    Add, // i32 addition
+    Mul, // i32 multiplication
+    Sub, // i32 subtraction
+    Div, // i32 division (raises an error on divide by zero)
+    Lt,  // Returns true if one i32 is less than another, otherwise false
+    Eq,  // Returns true if one i32 is equal another, otherwise false
 }
 ```
 
