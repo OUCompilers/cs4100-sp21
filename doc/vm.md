@@ -108,12 +108,12 @@ pub enum Binop {
 
 ### Execution Loop
 
-GrumpyVM's `mainloop` performs the following operations in order:
+GrumpyVM's dispatch loop performs the following operations in order:
 
-1. Check whether `halt == true`; if so, exit `mainloop`.
-2. Increment the `pc`.
-3. Check whether `pc - 1` is greater than or equal to the program length; if so, raise an error.
-4. Execute the instruction at address `pc - 1`.
+1. Check whether `pc` is greater than or equal to the program length; if so, raise an error.
+2. Fetch the instruction at address `pc`.
+3. Increment the `pc`.
+4. Execute the fetched instruction (now at address `pc-1` since pc has been incremented)
 5. Loop to 1.
 
 We implement this execution loop as the Rust function `exec` that takes as its second argument a mutable pointer to the VM state. The first argument, `d: &Debug`, is an immutable `DEBUG` flag.
@@ -123,24 +123,18 @@ pub enum Debug {
     DEBUG,
     NODEBUG
 }
-pub fn exec(d: &Debug, s: &mut State) {
-    'mainloop:loop {
-        if s.halt { break 'mainloop }
-        let pc = s.pc;
-        s.pc = pc + 1;
-        if pc >= s.program.len() {
-            panic!("exec: pc out of bounds")
-        }
-        let i = &s.program[pc].clone();
-        instr(i, s);
-    }
-    match d {
-        Debug::DEBUG => {
-            println!("{:?}", s)
-        },
-        Debug::NODEBUG => ()
+fn exec(d: Debug, s: &mut State) -> Result<(), String> {
+    // Dispatch loop.
+    loop {
+        // Print state if debug flag is set.
+	    if let Debug::DEBUG = d {
+	        println!("{}\n", s)
+	    }
+        // Check pc, fetch instruction, increment pc, execute instruction
+        ...
     }
 }
+
 ```
 
 ## Instruction Bytecode Format
