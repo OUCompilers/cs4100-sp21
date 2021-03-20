@@ -62,7 +62,7 @@ The schedule is subject to revision.
 | Week 7 (1 Mar) | DFAs, NFAs, lexers and lexer generators | Appel 2.3-2.5 | Q4 (5 Mar)  |
 | Week 8 (8 Mar) | Context-free languages, pushdown automata | Appel 3 | [PA2: VM](pa/2.md) (13 Mar) |
 | Week 9 (15 Mar) | Recursive descent and predictive parsing, parser generators | Appel 7.1, Appel 18.1 | Midterm Exam (18 Mar) |
-| Week 10 (22 Mar) | Abstract syntax trees, type systems, typechecking | TAPL 8 | [PA3: Runtime](pa/3.md) (27 Mar) |
+| Week 10 (22 Mar) | Abstract syntax trees, type systems, typechecking | TAPL 8 | [PA3: GC](pa/3.md) (27 Mar) |
 | Week 11 (29 Mar) | Intermediate representations, code generation | [Intermediate Representations](doc/ir.md), [Code Generation](doc/codegen.md) | Q5 (2 Apr) |
 | Week 12 (5 Apr) | Control-flow graphs, dominators | Appel 7.1, Appel 18.1 | No quiz -- work on PA4! |
 | Week 13 (12 Apr) | Dataflow/liveness analysis | Appel 10.1, Appel 19 (up to but not including 19.1) | [PA4: IR](pa/4.md) (17 Apr) |
