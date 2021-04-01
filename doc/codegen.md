@@ -326,16 +326,16 @@ We define the let-bound variables of an expression `e` by:
 
 ```
 bvs[ x ] = {}
-bvs[ (let x e1 e2) ] = {x} \cup bvs[ e1 ] \cup bvs[ e2 ]
+bvs[ (let x e1 e2) ] = {x} ∪ bvs[ e1 ] ∪ bvs[ e2 ]
 ```
 
-where by `\cup` we mean the union of two sets.
+where by `∪` we mean the union of two sets.
 
 The bound variables of the other expression types are defined similarly, e.g.:
 
 ```
-bvs[ (cond e e1 e2) ] = bvs[ e ] \cup bvs[ e1 ] \cup bvs[ e2 ]
-bvs[ (seq e1 e2) ] = bvs[ e1 ] \cup bvs[ e2 ]
+bvs[ (cond e e1 e2) ] = bvs[ e ] ∪ bvs[ e1 ] ∪ bvs[ e2 ]
+bvs[ (seq e1 e2) ] = bvs[ e1 ] ∪ bvs[ e2 ]
 ...
 ```
 
@@ -345,30 +345,34 @@ Once we know the let-bound variables of the body of a function `e`, we can const
 
 | **Variable**   | param1 | ... | paramN   | let_var1       | ... | let_varM           |
 |----------------|--------|-----|----------|----------------|-----|--------------------|
-| **rho**        | 0      | ... | N-1      | (N-1)+2        | ... | (N-1)+2+(M-1)      | 
+| **rho**        | 0      | ... | N-1      | N+2            | ... | (N-1)+2+(M-1)      |
 
-Variable `x` is stored at `fp + rho(x)`. For example, variable `let_var1` is stored at stack position `fp+(N-1)+2` where `N` is the number of function arguments. The `+2` gap between the arguments `argN` and `let_var1` is to account for the `ret_fp` and `ret_pc` values that are stored on the stack by the caller. 
+Variable `x` is stored at `fp + rho(x)`. For example, variable `let_var1` is stored at stack position `fp+(N-1)+2` where `N` is the number of function arguments. The `+2` gap between the arguments `argN` and `let_var1` is to account for the `ret_fp` and `ret_pc` values that are stored on the stack by the caller. I.e., rho should map each parameter and variable so that at runtime the stack looks like the following:
+
+| **Stack value** | param1         | ... | paramN         | ret_fp | ret_pc | let_var1     | ... | let_varM     |
+|-----------------|----------------|-----|----------------|--------|--------|--------------|-----|--------------|
+| **Location**    | fp+rho(param1) | ... | fp+rho(paramN) | fp+N   | fp+N+1 | fp+rho(var1) | ... | fp+rho(varM) |
 
 When a function begins executing, it needs to allocate space on the stack for its let-bound variables (by the GrumpyVM calling convention, the caller pushes the arguments and its return frame pointer and program counter). In pseudocode, this process is:
 
 ```
 C[ (fun f param1 param2 ... paramN -> ty e) ] = 
   let mut instrs = [];
-  //Calculate let-bound variables of function body e.
+  // Calculate let-bound variables of function body e.
   let let_vars = bvs[ e ];
-  //INTRO: Allocate callee stack frame (where let-bound variables will be stored).
+  // INTRO: Allocate callee stack frame (where let-bound variables will be stored).
   for x in let_vars:
     instrs.push( push Vundef );
-  //Build compilation environment rho
+  // Build compilation environment rho
   let rho = compilation environment for function, as described above;
-  //Compile e, referencing rho
+  // Compile e, referencing rho
   instrs.append( C_rho[ e ] );
-  //OUTRO: 
+  // OUTRO: 
   // 1. Store return value at appropriate spot on stack (as expected by ret).
   // 2. Pop let-bound local variables.
   ...
   instrs.append( ... )
-  //Return
+  // Return
   instrs.push( ret )
 ```
 
