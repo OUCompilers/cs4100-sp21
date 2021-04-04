@@ -18,7 +18,6 @@ e ::== v                    //Values
        (b e1 e2)            //Perform binary operation b
        (cond econd e1 e2)   //If econd then e1 otherwise e2
        (seq e1 e2)          //Do e1 then e2
-       (print e)            //Print the result of e (cast to u8)
 ```
 
 Our target language will include the following subset of Grumpy assembly: 
@@ -164,7 +163,7 @@ C[ (seq e1 e2) ] =
 
 The only wrinkle is that -- by the compilation invariant -- `instrs1` will leave `e1`'s result on top of the stack. We need to `pop` this result before we execute `instrs2`. Otherwise, the stack will contain an extra value. 
 
-Why do we pop `e1`'s result instead of using it? When executing the sequential composition of two expressions, the first expression `e1` is typically executed solely for its side-effects. For example, in the expression `(seq (print 65) 7)`, the first expression `(print 65)` prints the character `A` to `stdout` (`65` is the ASCII encoding of `A`). The overall expression returns `7`, the result of the second expression. 
+Why do we pop `e1`'s result instead of using it? When executing the sequential composition of two expressions, the first expression `e1` is typically executed solely for its side-effects.
 
 ## Let Expressions and Variables
 
