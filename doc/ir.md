@@ -1,6 +1,6 @@
 # Grumpy Intermediate Representation
 
-The Grumpy compiler desugars Grumpy source code to GrumpyIR, a smaller language that's simpler to optimize and compile. In this chapter, we present GrumpyIR's syntax and semantics, along with a few example programs that illustrate features of the language.
+The Grumpy compiler desugars Grumpy source code to GrumpyIR, a smaller language that's simpler to optimize and compile. In this chapter, we present GrumpyIR's syntax, along with a few example programs that illustrate features of the language.
 
 ## Syntax
 
