@@ -67,7 +67,7 @@ The schedule is subject to revision.
 | Week 12 (5 Apr) | Intermediate representations, code generation | [Intermediate Representations](doc/ir.md), [Code Generation](doc/codegen.md) | No quiz -- work on PA4! |
 | Week 13 (12 Apr) | Control-flow graphs, dominators | Appel 7.1, Appel 18.1 | [PA4: IR](pa/4.md) (17 Apr) |
 | Week 14 (19 Apr) | Dataflow/liveness analysis | Appel 10.1, Appel 19 (up to but not including 19.1) | No quiz -- study for finals! |
-| Apr 26 - Apr 20 | **FINAL EXAM** (TBD) | | [PA5: Optimizations](pa/5.md) (TBD) |
+| Apr 26 - Apr 30 | **FINAL EXAM** (TBD) | | [PA5: Optimizations](pa/5.md) (TBD) |
 <!-- | Week 14 (19 Apr) | Register allocation | Appel 11 | No quiz -- study for finals! | -->
 
 Assignments are due in Blackboard at 11:59pm unless otherwise specified. **Q0**, **Q1**, etc., denote quizzes in Blackboard, generally due on the Fridays of weeks with no due programming assignments (PAs).
