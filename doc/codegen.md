@@ -156,9 +156,7 @@ Once we know how to compile expressions like `cond`, sequence expressions like `
 C[ (seq e1 e2) ] =
   let instrs1 = C[ e1 ];
   let instrs2 = C[ e2 ];
-  instrs1 ++
-  [pop]
-  instrs2
+  instrs1 ++ [pop] ++ instrs2
 ```
 
 The only wrinkle is that -- by the compilation invariant -- `instrs1` will leave `e1`'s result on top of the stack. We need to `pop` this result before we execute `instrs2`. Otherwise, the stack will contain an extra value. 
